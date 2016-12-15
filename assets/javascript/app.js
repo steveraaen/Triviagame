@@ -79,10 +79,13 @@ for( let i=0; i<10000; i++)     {
             $('#media').html(curQues.media);
             $('#message').text("Correct!");
             numCorrect++;
+            $('#correct').html('Good Guesses  :  ' + numCorrect);
+
             clickSet = setTimeout(nextQ, 4000)     
         } else {
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
+            $('#inCorrect').html('Bad Guesses  :  ' + numIncorrect);
         }
     });
     function timesUp() {
@@ -93,11 +96,15 @@ for( let i=0; i<10000; i++)     {
         setTimeout(nextQ, 4000);
     }
     function nextQ() {
+
 /*        clearTimeout(nextQ);*/
         stopInterval();
         questionTimer = 12;
         setTimer()
         $('#timer').html(questionTimer);
+        $('#timeout').text('Timed Out  :  ' + unanswered);
+        $('#correct').html('Good Guesses  :  ' + numCorrect);
+        $('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
         $('#choices').empty();
         pickQ = Math.floor(Math.random() * (qa.length));
         for (let i = 0; i < qa.length; i++) {
