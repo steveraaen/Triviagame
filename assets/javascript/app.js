@@ -46,73 +46,92 @@ var q6 = {
     'media': '<img id = "ap" src ="./assets/images/champagne.gif">',
     'explainer': 'Pérignon was born to a clerk of the local marshal in the town of Sainte-Menehould in the ancient Province of Champagne in the Kingdom of France. He was born in December 1638 and was baptized on 5 January 1639. He was the youngest of his parents\' seven children, as his mother died the following summer. His father\'s family owned several vineyards in the region.'
 }
-var qa = [q1, q2, q3];
+var qa = [q1, q2, q3, q4, q5];
 var curQues = {};
 var choice;
 var pickQ;
-var questionTimer;
+/*var questionTimer;
+
+var ques = $('<div class = "col-md-3 "></div>');
+for(var i = 0; i < qa.length; i++){
+ques.attr('data-question', qa[i].question);
+/*$('#timeout').data('question');
+console.log(ques);*/
+
 
 $(document).ready(function() {
+$('#timer').html(questionTimer);
+$('#timeout').text('Timed Out  :  ' + unanswered);
+$('#correct').html('Good Guesses  :  ' + numCorrect);
+$('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
+
    function setTimer(){
     setInterval(timer, 1000);
     questionTimer = 12;
     function timer () {    
         questionTimer--;
         $('#timer').html(questionTimer)
-        console.log(questionTimer);
+/*        console.log(questionTimer);*/
         if (questionTimer <= 0) {
-            timesUp()
-            stopInterval()
+            
+            stopInterval();
+            timesUp();
         }
         }
     }
     setTimer()
 function stopInterval(){
 for( let i=0; i<10000; i++)     {
+/*        window.clearTimeout(i);*/
         window.clearInterval(i);
     }
-}           
-    $('div').on('click', '.answers', function() {
+}          
+    $('#choices').on('click', '.answers', function() {
         choice = $(this).text();
         if (curQues.answer === choice) {
-            stopInterval()
+           
             $('#media').html(curQues.media);
-            $('#message').text("Correct!");
-            numCorrect++;
+            $('#message').html("Correct!");
             $('#correct').html('Good Guesses  :  ' + numCorrect);
+console.log('num correct  :' + numCorrect)
 
-            clickSet = setTimeout(nextQ, 4000)     
-        } else {
+          /*  clickSet = setTimeout(nextQ, 4000) ;*/
+        /*    stopInterval();*/
+                   numCorrect ++;
+
+        } else if (curQues.answer !== choice) {
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
+console.log('num correct  :' + numCorrect)
             $('#inCorrect').html('Bad Guesses  :  ' + numIncorrect);
+        } else{
+            return;
         }
     });
     function timesUp() {
         stopInterval()
+        setTimeout(nextQ, 4000);
         $('#media').html(curQues.media)
         $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
         unanswered++;
-        setTimeout(nextQ, 4000);
+        console.log(unanswered)
+
     }
     function nextQ() {
-
-/*        clearTimeout(nextQ);*/
+        $('#timer').html(questionTimer)
         stopInterval();
         questionTimer = 12;
         setTimer()
-        $('#timer').html(questionTimer);
-        $('#timeout').text('Timed Out  :  ' + unanswered);
-        $('#correct').html('Good Guesses  :  ' + numCorrect);
-        $('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
+
         $('#choices').empty();
         pickQ = Math.floor(Math.random() * (qa.length));
         for (let i = 0; i < qa.length; i++) {
             curQues = qa[pickQ];
             $('#question').html(curQues.question);
+/*            console.log(qa[pickQ])*/
         }
         for (let i = 0; i < curQues.answers.length; i++) {
-            $('#choices').append('<div class = "answers">' + curQues.answers[i] + '</div>');
+            $('#choices').append('<div class = "answers" >' + curQues.answers[i] + '</div>');
         };
 
         }
