@@ -18,7 +18,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><!-- &amp;times; --></button>
             <h4 class="modal-title" id="myModalLabel">Week 5 Homework: Trivia Game</h4>
             </div>
-            <div class="modal-body">This game is running right now so read fast.  The timer gives you 12 seconds to answer each question. An intended feature is that the counter doesn't appear until only 11 seconds left, thereby increasing the difficulty of the game.* If you don't click on an answer, the "unanswered" number gets a +1.  If you guess incorrectly, "Wrong guesses" is incremented.  You can guess as many times as you want per question.  Want extra points?  Keep clicking the correct answer during the 4 second timeout between questions! If the number of correct answers reaches 5 before the sum of unanswered and wrong answers, you win.</div>
+            <div class="modal-body">This game is running right now so read fast.  The timer gives you 12 seconds to answer each question. The counter doesn't appear until only 11 seconds left, thereby increasing the difficulty of the game.* If you don't click on an answer, the "unanswered" number gets a +1.  If you guess incorrectly, "Wrong guesses" is incremented.  You can guess as many times as you want per question.  Want extra points?  Keep clicking the correct answer during the 4 second timeout between questions!* If the number of correct answers reaches 5 before the sum of unanswered and wrong answers, you win.<br>* This is a feature not a bug.<br></div>
                 <h3></h3>
             </div>
             <div class="modal-footer">
@@ -50,9 +50,10 @@
 
 </div>
 <div class = "row well">
-	<div id = "question" class = "col-md-12  question"></div>
+	<div id = "question" class = "col-md-5  question"></div>
+	
+	<div id = "choices" class = "col-md-7"></div>
 	</div>
-	<div id = "choices" class = "row well"></div>
 	<div id = "message" class = "row well"></div>
 	<div id = "media" class = "row well"></div>
 </div>

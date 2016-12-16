@@ -12,12 +12,15 @@ h2 {
 #question{
 	color: white;
 }
+.answers{
+	color: white;
+}
 .modal-body{
 	background-color:black;
 }
 .answers:hover {
 		 
-    color: white;
+    color: #EC9F2E;
 
 }
 .stats{
@@ -42,7 +45,12 @@ h2 {
 .btn-success{
 	border-color: white;
 }
-
+.good-guess{
+	color: green;
+}
+.bad-guess{
+	color: red;
+}
 
 
 

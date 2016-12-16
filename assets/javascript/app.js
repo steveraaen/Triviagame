@@ -62,8 +62,7 @@ $('#timer').html(questionTimer);
         alert('Game Over - You LOST with 5 bad guesses and-or unanswered questions');
     }else if (numCorrect >=5) {
         alert('Game Over - You WON with 5 correct guesses!');
-    }else
-    {
+    }else{
         questionTimer = 12;
     console.log(numCorrect + numIncorrect + unanswered)
     setInterval(timer, 1000);
@@ -87,7 +86,6 @@ for( let i=0; i<10000; i++)     {
     $('#choices').on('click', '.answers', function() {
         choice = $(this).text();
         if (curQues.answer === choice) {
-           
             $('#media').html(curQues.media);
             $('#message').html("Correct!");            
 console.log('num correct  :' + numCorrect)
