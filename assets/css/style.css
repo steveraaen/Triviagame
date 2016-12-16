@@ -1,6 +1,31 @@
-#timer{
-	background-color:black;
+
+body{
+	background-color:#4C4C4C;
+	font-size: 20px;
 	color: #EC9F2E;
-	padding: 15px, 15px, 15px, 15px;
 	text-align: center;
+}
+#question{
+	color: white;
+}
+.answers:hover {
+		 
+    color: white;
+
+}
+.stats{
+	background-color:black;
+	font-size: 20px;
+	color: white;
+	padding: 15px, 5px, 15px, 5px;
+}
+.well{
+	background-color:black;
+	border: none;
+}
+.left{
+	text-align: left;
+}
+.right{
+	text-align: right;
 }

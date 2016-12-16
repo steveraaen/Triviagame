@@ -3,7 +3,6 @@ var numCorrect = 0,
     unanswered = 0,
     questionTimer = 12;
 
-
 var q1 = {
     'question': 'Which was the first and only racehorse to defeat Man O War?',
     'answer': 'Upset',
@@ -50,35 +49,31 @@ var qa = [q1, q2, q3, q4, q5];
 var curQues = {};
 var choice;
 var pickQ;
-/*var questionTimer;
-
-var ques = $('<div class = "col-md-3 "></div>');
-for(var i = 0; i < qa.length; i++){
-ques.attr('data-question', qa[i].question);
-/*$('#timeout').data('question');
-console.log(ques);*/
-
 
 $(document).ready(function() {
-$('#timer').html(questionTimer);
-$('#timeout').text('Timed Out  :  ' + unanswered);
+
+$('#timeout').text('No Answer  :  ' + unanswered);
 $('#correct').html('Good Guesses  :  ' + numCorrect);
 $('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
+$('#timer').html(questionTimer);
 
    function setTimer(){
+    if(numCorrect + numIncorrect + unanswered >= 6){
+        alert('Game Over')
+    }else {
+        questionTimer = 12;
+    console.log(numCorrect + numIncorrect + unanswered)
     setInterval(timer, 1000);
-    questionTimer = 12;
+    
     function timer () {    
         questionTimer--;
-        $('#timer').html(questionTimer)
-/*        console.log(questionTimer);*/
-        if (questionTimer <= 0) {
-            
+        $('#timer').html(questionTimer /*+ '  seconds left to answer the question' */ )
+        if (questionTimer <= 0) {       
             stopInterval();
             timesUp();
         }
         }
-    }
+    }}
     setTimer()
 function stopInterval(){
 for( let i=0; i<10000; i++)     {
@@ -91,19 +86,17 @@ for( let i=0; i<10000; i++)     {
         if (curQues.answer === choice) {
            
             $('#media').html(curQues.media);
-            $('#message').html("Correct!");
-            $('#correct').html('Good Guesses  :  ' + numCorrect);
+            $('#message').html("Correct!");            
 console.log('num correct  :' + numCorrect)
-
-          /*  clickSet = setTimeout(nextQ, 4000) ;*/
-        /*    stopInterval();*/
-                   numCorrect ++;
-
+            stopInterval();
+            numCorrect ++;
+            $('#correct').html('Good Guesses  :  ' + numCorrect);
+            clickSet = setTimeout(nextQ, 4000) ;
         } else if (curQues.answer !== choice) {
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
-console.log('num correct  :' + numCorrect)
-            $('#inCorrect').html('Bad Guesses  :  ' + numIncorrect);
+console.log('num Incorrect  :' + numIncorrect)
+            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect);
         } else{
             return;
         }
@@ -114,6 +107,7 @@ console.log('num correct  :' + numCorrect)
         $('#media').html(curQues.media)
         $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
         unanswered++;
+        $('#timeout').html('No Answer  :  ' + unanswered);
         console.log(unanswered)
 
     }
@@ -122,7 +116,7 @@ console.log('num correct  :' + numCorrect)
         stopInterval();
         questionTimer = 12;
         setTimer()
-
+        $('#media').empty();
         $('#choices').empty();
         pickQ = Math.floor(Math.random() * (qa.length));
         for (let i = 0; i < qa.length; i++) {
@@ -133,7 +127,6 @@ console.log('num correct  :' + numCorrect)
         for (let i = 0; i < curQues.answers.length; i++) {
             $('#choices').append('<div class = "answers" >' + curQues.answers[i] + '</div>');
         };
-
         }
 nextQ()
 });
