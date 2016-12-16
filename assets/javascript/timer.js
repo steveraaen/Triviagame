@@ -101,8 +101,7 @@ for( let i=0; i<10000; i++)     {
             $(this).css( "color", "red" );
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
-            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect);
-            $('#incorrect').html('Good Guesses  :  ' + numIncorrect).css("color", "white");
+            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect).css("color", "white");
         } else{
             return;
         }
