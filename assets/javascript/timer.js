@@ -90,7 +90,7 @@ for( let i=0; i<10000; i++)     {
             $(this).css( "color", "green" );
             $('.answers').not(this).css( "color", "red" );
             $('#media').html(curQues.media);
-            $('#message').html("Correct!");
+            $('#message').html("Correct!").css("color", "green");
             $('#question').css("color", "#B3B3B3");            
 
             stopInterval();
@@ -99,7 +99,7 @@ for( let i=0; i<10000; i++)     {
             clickSet = setTimeout(nextQ, 4000) ;
         } else if (curQues.answer !== choice) {
             $(this).css( "color", "red" );
-            $('#message').text("Wrong.  Try Again");
+            $('#message').html("Wrong.  Try Again").css("color", "red");
             numIncorrect++;
             $('#incorrect').html('Bad Guesses  :  ' + numIncorrect).css("color", "white");
         } else{
