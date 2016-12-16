@@ -88,7 +88,6 @@ for( let i=0; i<10000; i++)     {
         if (curQues.answer === choice) {
             $('#media').html(curQues.media);
             $('#message').html("Correct!");            
-console.log('num correct  :' + numCorrect)
             stopInterval();
             numCorrect ++;
             $('#correct').html('Good Guesses  :  ' + numCorrect);
@@ -109,8 +108,6 @@ console.log('num Incorrect  :' + numIncorrect)
         $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
         unanswered++;
         $('#timeout').html('No Answer  :  ' + unanswered);
-        console.log(unanswered)
-
     }
     function nextQ() {
         $('#timer').html(questionTimer)
@@ -123,7 +120,6 @@ console.log('num Incorrect  :' + numIncorrect)
         for (let i = 0; i < qa.length; i++) {
             curQues = qa[pickQ];
             $('#question').html(curQues.question);
-/*            console.log(qa[pickQ])*/
         }
         for (let i = 0; i < curQues.answers.length; i++) {
             $('#choices').append('<div class = "answers" >' + curQues.answers[i] + '</div>');

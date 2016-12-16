@@ -53,12 +53,10 @@ var pickQ;
 $(document).ready(function() {
 
 var choices = $('#choice');
-
-$('#timeout').text('No Answer  :  ' + unanswered);
+$('#timeout').html('No Answer  :  ' + unanswered);
 $('#correct').html('Good Guesses  :  ' + numCorrect);
 $('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
 $('#timer').html(questionTimer);
-
    function setTimer(){
     if(numIncorrect + unanswered >= 5){
         alert('Game Over - You LOST with 5 bad guesses and-or unanswered questions');
@@ -68,7 +66,7 @@ $('#timer').html(questionTimer);
         questionTimer = 12;
     console.log(numCorrect + numIncorrect + unanswered)
     setInterval(timer, 1000);
-    
+    $('#question').css("color", "white");
     function timer () {    
         questionTimer--;
         $('#timer').html(questionTimer)
@@ -89,19 +87,22 @@ for( let i=0; i<10000; i++)     {
         choice = $(this).text();
         console.log(this)
         if (curQues.answer === choice) {
-            $(this).addClass('good-guess');
+            $(this).css( "color", "green" );
+            $('.answers').not(this).css( "color", "red" );
             $('#media').html(curQues.media);
-            $('#message').html("Correct!");            
-console.log('num correct  :' + numCorrect)
+            $('#message').html("Correct!");
+            $('#question').css("color", "#B3B3B3");            
+
             stopInterval();
             numCorrect ++;
-            $('#correct').html('Good Guesses  :  ' + numCorrect);
+            $('#correct').html('Good Guesses  :  ' + numCorrect).css("color", "white");
             clickSet = setTimeout(nextQ, 4000) ;
         } else if (curQues.answer !== choice) {
+            $(this).css( "color", "red" );
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
-console.log('num Incorrect  :' + numIncorrect)
             $('#incorrect').html('Bad Guesses  :  ' + numIncorrect);
+            $('#incorrect').html('Good Guesses  :  ' + numIncorrect).css("color", "white");
         } else{
             return;
         }
@@ -109,12 +110,13 @@ console.log('num Incorrect  :' + numIncorrect)
     function timesUp() {
         stopInterval()
         setTimeout(nextQ, 4000);
+        $('#question').css("color", "#808080");
         $('#media').html(curQues.media)
         $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
         unanswered++;
-        $('#timeout').html('No Answer  :  ' + unanswered);
-        console.log(unanswered)
+        $('#timeout').html('No Answer  :  ' + unanswered).css("color", "white");
 
+        console.log(unanswered)
     }
     function nextQ() {
         $('#timer').html(questionTimer)
@@ -127,11 +129,12 @@ console.log('num Incorrect  :' + numIncorrect)
         for (let i = 0; i < qa.length; i++) {
             curQues = qa[pickQ];
             $('#question').html(curQues.question);
-/*            console.log(qa[pickQ])*/
         }
         for (let i = 0; i < curQues.answers.length; i++) {
             $('#choices').append('<div class = "answers" >' + curQues.answers[i] + '</div>');
         };
+     
+
         }
 nextQ()
 });

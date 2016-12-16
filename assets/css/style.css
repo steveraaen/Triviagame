@@ -11,6 +11,8 @@ h2 {
 }
 #question{
 	color: white;
+	padding-top: 25px;
+	font-size: 24px;
 }
 .answers{
 	color: white;
@@ -45,14 +47,30 @@ h2 {
 .btn-success{
 	border-color: white;
 }
-.good-guess{
+/*.good-guess{
 	color: green;
 }
 .bad-guess{
 	color: red;
 }
+*/
+/*#timer{
+	color: #D19B71;
+}
+#timeout{
+	color: #D19B71;
+}
+#correct{
+	color: #D19B71;
+}
+#incorrect{
+	color: #D19B71;
+}
+.unused{
+	color: #D1CF79;
+	color: #A1D16A;
 
-
+}*/
 
 
 
