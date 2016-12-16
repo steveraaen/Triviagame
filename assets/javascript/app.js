@@ -58,16 +58,19 @@ $('#incorrect').html('Bad Guesses  :  ' +  numIncorrect);
 $('#timer').html(questionTimer);
 
    function setTimer(){
-    if(numCorrect + numIncorrect + unanswered >= 6){
-        alert('Game Over')
-    }else {
+    if(numIncorrect + unanswered >= 5){
+        alert('Game Over - You LOST with 5 bad guesses and-or unanswered questions');
+    }else if (numCorrect >=5) {
+        alert('Game Over - You WON with 5 correct guesses!');
+    }else
+    {
         questionTimer = 12;
     console.log(numCorrect + numIncorrect + unanswered)
     setInterval(timer, 1000);
     
     function timer () {    
         questionTimer--;
-        $('#timer').html(questionTimer /*+ '  seconds left to answer the question' */ )
+        $('#timer').html(questionTimer)
         if (questionTimer <= 0) {       
             stopInterval();
             timesUp();
