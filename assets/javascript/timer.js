@@ -3,6 +3,7 @@ var numCorrect = 0,
     unanswered = 0,
     questionTimer = 12;
 
+
 var q1 = {
     'question': 'Which was the first and only racehorse to defeat Man O War?',
     'answer': 'Upset',
@@ -49,6 +50,8 @@ var qa = [q1, q2, q3, q4, q5];
 var curQues = {};
 var choice;
 var pickQ;
+var gp;
+var totalBad;
 
 $(document).ready(function() {
 
@@ -63,7 +66,7 @@ $('#timer').html(questionTimer);
     }else if (numCorrect >=5) {
         alert('Game Over - You WON with 5 correct guesses!');
     }else{
-        questionTimer = 12;
+        questionTimer = 15;
     console.log(numCorrect + numIncorrect + unanswered)
     setInterval(timer, 1000);
     $('#question').css("color", "white");
@@ -92,16 +95,23 @@ for( let i=0; i<10000; i++)     {
             $('#media').html(curQues.media);
             $('#message').html("Correct!").css("color", "green");
             $('#question').css("color", "#B3B3B3");            
-
             stopInterval();
             numCorrect ++;
-            $('#correct').html('Good Guesses  :  ' + numCorrect).css("color", "white");
+
+            gp = $('.progress-bar-success').css('width',numCorrect * 192);
+            $('.progress-bar-success').html(gp);
+console.log(gp);
+            $('#correct').html('Good Guesses  :  ' + numCorrect).css("color", "green");
             clickSet = setTimeout(nextQ, 4000) ;
         } else if (curQues.answer !== choice) {
             $(this).css( "color", "red" );
             $('#message').html("Wrong.  Try Again").css("color", "red");
             numIncorrect++;
-            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect).css("color", "white");
+            totalBad = numIncorrect + unanswered;
+            bp = $('.progress-bar-danger').css('width',totalBad * 192);
+            $('.progress-bar-danger').html(bp);
+console.log(bp);
+            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect).css("color", "red");
         } else{
             return;
         }
@@ -111,16 +121,19 @@ for( let i=0; i<10000; i++)     {
         setTimeout(nextQ, 4000);
         $('#question').css("color", "#808080");
         $('#media').html(curQues.media)
-        $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
+        $('#message').text("Times Up!  The answer was " + curQues.answer + "!").css("color", "red")
         unanswered++;
-        $('#timeout').html('No Answer  :  ' + unanswered).css("color", "white");
+        $('#timeout').html('No Answer  :  ' + unanswered).css("color", "red");
+        totalBad = numIncorrect + unanswered;
+        bp = $('.progress-bar-danger').css('width',totalBad * 192);
+        $('.progress-bar-danger').html(bp);
 
         console.log(unanswered)
     }
     function nextQ() {
         $('#timer').html(questionTimer)
         stopInterval();
-        questionTimer = 12;
+        questionTimer = 30;
         setTimer()
         $('#media').empty();
         $('#choices').empty();

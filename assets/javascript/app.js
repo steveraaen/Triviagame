@@ -90,13 +90,13 @@ for( let i=0; i<10000; i++)     {
             $('#message').html("Correct!");            
             stopInterval();
             numCorrect ++;
-            $('#correct').html('Good Guesses  :  ' + numCorrect);
+            $('#correct').html('Good Guesses  :  ' + numCorrect).css('color', 'green');;
             clickSet = setTimeout(nextQ, 4000) ;
         } else if (curQues.answer !== choice) {
             $('#message').text("Wrong.  Try Again");
             numIncorrect++;
 console.log('num Incorrect  :' + numIncorrect)
-            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect);
+            $('#incorrect').html('Bad Guesses  :  ' + numIncorrect).css('color', 'red');;
         } else{
             return;
         }
@@ -105,9 +105,9 @@ console.log('num Incorrect  :' + numIncorrect)
         stopInterval()
         setTimeout(nextQ, 4000);
         $('#media').html(curQues.media)
-        $('#message').text("Times Up!  The answer was " + curQues.answer + "!");
+        $('#message').text("Times Up!  The answer was " + curQues.answer + "!").css('color', 'red');
         unanswered++;
-        $('#timeout').html('No Answer  :  ' + unanswered);
+        $('#timeout').html('No Answer  :  ' + unanswered).css('color', 'red');
     }
     function nextQ() {
         $('#timer').html(questionTimer)

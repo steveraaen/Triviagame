@@ -19,11 +19,13 @@ h2 {
 }
 .modal-body{
 	background-color:black;
+	line-height: 30px;
 }
 .answers:hover {
-		 
     color: #EC9F2E;
-
+}
+.progress{
+	background-color: black;
 }
 .stats{
 	background-color:black;
