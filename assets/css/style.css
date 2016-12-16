@@ -5,8 +5,15 @@ body{
 	color: #EC9F2E;
 	text-align: center;
 }
+h2 {
+    letter-spacing: 3px;
+    word-spacing: 10px;
+}
 #question{
 	color: white;
+}
+.modal-body{
+	background-color:black;
 }
 .answers:hover {
 		 
@@ -29,3 +36,21 @@ body{
 .right{
 	text-align: right;
 }
+.modal-title{
+	background-color:#4C4C4C;
+}
+.btn-success{
+	border-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+

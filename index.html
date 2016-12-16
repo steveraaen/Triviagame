@@ -6,11 +6,36 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="assets/javascript/app.js"></script>
 <!-- 	<script src="assets/javascript/app.js"></script> -->
 </head>
 <body>
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><!-- &amp;times; --></button>
+            <h4 class="modal-title" id="myModalLabel">Week 5 Homework: Trivia Game</h4>
+            </div>
+            <div class="modal-body">This game is running right now so read fast.  The timer gives you 12 seconds to answer each question. An intended feature is that the counter doesn't appear until only 11 seconds left, thereby increasing the difficulty of the game.* If you don't click on an answer, the "unanswered" number gets a +1.  If you guess incorrectly, "Wrong guesses" is incremented.  You can guess as many times as you want per question.  Want extra points?  Keep clicking the correct answer during the 4 second timeout between questions! If the number of correct answers reaches 5 before the sum of unanswered and wrong answers, you win.</div>
+                <h3></h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
 <div id = "game" class = "container">
+<div class = "row well">
+	<div class = "col-md-10"><h2>Basic Trivia Game</h2></div>
+	<div class = "col-md-2">		
+	<a href="#" class="btn btn-md btn-success" data-toggle="modal" data-target = "#basicModal">Info</a> </div>
+</div>
 <div class = "row well">
 	<div class = "col-md-4 right"><p>There are</p></div>
 	<div id = "timer" label = "Interval" class = "col-md-1 stats"></div>
